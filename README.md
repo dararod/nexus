@@ -1,40 +1,47 @@
-# create-svelte
+<div align="center">
+  <h1>client</h1>
+  <h4 align="center">Self-hosteable social network</h4>
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+<div align="center">
 
-## Creating a project
+![Build](https://github.com/32bitco/client/workflows/build/badge.svg)
+![Lint](https://github.com/32bitco/client/workflows/lint/badge.svg)
 
-If you're seeing this, you've probably already done this step. Congrats!
+</div>
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
+# Development
 
-# create a new project in my-app
-npm init svelte@next my-app
-```
+## Requirements
 
-> Note: the `@next` is temporary
+- NodeJS
+- pnpm
 
-## Developing
+## Getting Started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+1. Clone this repository
 
 ```bash
-npm run build
+git clone https://github.com/32bitco/client.git
 ```
 
-You can preview the production build with `npm run preview`.
+2. In a separate terminal session, install project dependencies.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+> It's recommended to use PNPM to manage packages in this project. You can install it using npm by running: `npm install -g pnpm`
+
+```bash
+pnpm install
+```
+
+3. Run the server
+
+```bash
+pnpm run dev
+```
+
+The project must be available on http://localhost:3000.
+
+# Contributing
+
+Every kind of contribution to this project is welcome, please, don't hesitate
+to open a Pull Request or Issue. I will be happy to help!
