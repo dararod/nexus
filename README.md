@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>client</h1>
+  <h1>nexus</h1>
   <h4 align="center">Self-hosteable social network</h4>
 </div>
 
@@ -9,6 +9,8 @@
 ![Lint](https://github.com/32bitco/client/workflows/lint/badge.svg)
 
 </div>
+
+>  Nexus formal definition: a relationship or connection between people or things. [Source](https://www.merriam-webster.com/dictionary/nexus).
 
 # Development
 
