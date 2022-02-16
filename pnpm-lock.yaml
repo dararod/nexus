@@ -6,9 +6,11 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.10.1
   '@typescript-eslint/parser': ^5.10.1
   autoprefixer: ^10.4.2
+  classnames: ^2.3.1
   eslint: ^7.32.0
   eslint-config-prettier: ^8.3.0
   eslint-plugin-svelte3: ^3.2.1
+  phosphor-svelte: ^1.1.2
   postcss: ^8.4.6
   prettier: ^2.5.1
   prettier-plugin-svelte: ^2.5.0
@@ -25,9 +27,11 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.11.0_3bf83de4bfb4bafe384c8467b43d3174
   '@typescript-eslint/parser': 5.11.0_eslint@7.32.0+typescript@4.5.5
   autoprefixer: 10.4.2_postcss@8.4.6
+  classnames: 2.3.1
   eslint: 7.32.0
   eslint-config-prettier: 8.3.0_eslint@7.32.0
   eslint-plugin-svelte3: 3.4.0_eslint@7.32.0+svelte@3.46.4
+  phosphor-svelte: 1.1.2_svelte@3.46.4
   postcss: 8.4.6
   prettier: 2.5.1
   prettier-plugin-svelte: 2.6.0_prettier@2.5.1+svelte@3.46.4
@@ -670,6 +674,13 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /classnames/2.3.1:
+    resolution:
+      {
+        integrity: sha512-OlQdbZ7gLfGarSqxesMesDa5uz7KFbID8Kpq/SxIoNGDqY8lSYs0D+hhtBXhcdB3rcbXArFr7vlHheLk1voeNA==
+      }
     dev: true
 
   /color-convert/1.9.3:
@@ -1937,6 +1948,17 @@ packages:
         integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==
       }
     engines: { node: '>=8' }
+    dev: true
+
+  /phosphor-svelte/1.1.2_svelte@3.46.4:
+    resolution:
+      {
+        integrity: sha512-YeS3qkENpg7oDG3G4fAWZBOgF5TnK1nSNKOxUyh/+K48RQ76qjK1nq7FaVjfQOCYiqrJqlul6HNdqRlX1RGZhw==
+      }
+    peerDependencies:
+      svelte: '>=3'
+    dependencies:
+      svelte: 3.46.4
     dev: true
 
   /picocolors/1.0.0:
