@@ -8,8 +8,9 @@
     "preview": "svelte-kit preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. . && eslint --fix .",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. . && eslint --fix ."
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@sveltejs/adapter-cloudflare": "1.0.0-next.10",
@@ -21,6 +22,8 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
     "phosphor-svelte": "^1.1.2",
     "postcss": "^8.4.6",
     "prettier": "^2.5.1",
