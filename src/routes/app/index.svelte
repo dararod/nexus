@@ -1,7 +1,7 @@
 <script>
-	import Feed from '$lib/modules/feed/components/Feed.svelte';
+  import Feed from '$lib/modules/feed/components/Feed.svelte';
 </script>
 
 <div class="flex justify-center">
-	<Feed />
+  <Feed />
 </div>
