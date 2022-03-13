@@ -6,6 +6,7 @@
   export let fullWidth = false;
   export let label: string | undefined = undefined;
   export let variant: Variant = 'default';
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   export let icon: any | null = null;
 
   let className = classNames('py-1 px-3 rounded text-sm flex items-center', {
