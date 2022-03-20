@@ -1,0 +1,12 @@
+config:
+  withooks: false
+documents:
+  - 'src/**/*.gql'
+generates:
+  src/lib/graphql/schema.ts:
+    plugins:
+      - 'typescript'
+      - 'typescript-operations'
+      - 'typescript-urql'
+overwrite: true
+schema: ${VITE_API_URL}
