@@ -6,5 +6,5 @@ node_modules
 .env
 .env.*
 !.env.example
-.pnpm-debug.log
+package-lock.json
 /src/lib/graphql/schema.ts

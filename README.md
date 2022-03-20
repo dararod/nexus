@@ -17,7 +17,6 @@
 ## Requirements
 
 - NodeJS
-- pnpm
 
 ## Getting Started
 
@@ -29,16 +28,14 @@ git clone https://github.com/whizzbit/nexus-client.git
 
 2. In a separate terminal session, install project dependencies.
 
-> It's recommended to use PNPM to manage packages in this project. You can install it using npm by running: `npm install -g pnpm`
-
 ```bash
-pnpm install
+npm install
 ```
 
 3. Run the server
 
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 The project must be available on http://localhost:3000.
@@ -53,7 +50,7 @@ import them to perform any queries or mutations.
 
 > Make sure `VITE_API_URL` points to an instance of [nexus-server][1]
 
-Execute `pnpm run gql:generate` to generate the `src/lib/graphql/schema.ts`
+Execute `npm run gql:generate` to generate the `src/lib/graphql/schema.ts`
 file. You must import any queries and mutations from this file and use them in
 the service implementation.
 
