@@ -1,16 +1,16 @@
 <script lang="ts">
   export let type = 'text';
-  export let name = '';
-  export let placeholder = '';
+  export let name: string;
+  export let label: string;
+  export let placeholder: string | undefined = undefined;
   export let required = false;
   export let id = '';
   export let value = '';
-  export let autocomplete = '';
-  export let label = '';
+  export let autocomplete = false;
 </script>
 
 <div>
-  <label for="first-name" class="block text-sm font-medium text-gray-700">{label}</label>
+  <label for={name} class="block text-sm font-medium text-gray-700">{label}</label>
   <input
     {type}
     {name}
