@@ -9,8 +9,8 @@ fragment UserFragment on User {
   updatedAt
 }
 
-mutation UserCreate($input: UserCreateInput!) {
-  userCreate(input: $input) {
+mutation RegisterAccount($input: AccountRegisterInput!) {
+  accountRegister(input: $input) {
     ...UserFragment
   }
 }

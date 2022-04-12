@@ -1,13 +1,15 @@
 <script lang="ts">
   import { newForm } from 'manzana';
-  import { userService } from '$lib/services/user';
-
   import { createEventDispatcher } from 'svelte';
+
+  import Input from '$lib/components/Input.svelte';
+  import { userService } from '$lib/services/user';
+  import { UniqueError } from '$lib/errors/UniqueError';
+
+  let error = null;
+
   const dispatch = createEventDispatcher();
-
   const now = new Date();
-  const today = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate() + 1}`;
-
   const { handleSubmit, values } = newForm<{
     name: string;
     lastName: string;
@@ -27,68 +29,59 @@
       birthdate: new Date()
     },
     onSubmit: async (values) => {
-      const birthdate = new Date(values.birthdate).toJSON();
+      try {
+        error = null;
 
-      await userService.userCreate({
-        name: values.name,
-        lastName: values.lastName,
-        email: values.email,
-        password: values.password,
-        username: values.username,
-        birthdate
-      });
+        const birthdate = new Date(values.birthdate).toJSON();
+
+        await userService.accountRegister({
+          name: values.name,
+          lastName: values.lastName,
+          email: values.email,
+          password: values.password,
+          username: values.username,
+          birthdate
+        });
+      } catch (err) {
+        if (err instanceof UniqueError) {
+          error = `El campo ${err.field} debe ser unico.`;
+          return;
+        }
+
+        // TODO: Show general error
+      }
     }
   });
 </script>
 
 <div>
   <form on:submit={handleSubmit}>
-    <div>
-      <label for="name">Name: </label>
-      <input type="text" name="name" id="name" bind:value={$values.name} required />
-    </div>
-    <div>
-      <label for="lastName">Last Name: </label>
-      <input type="text" name="lastName" id="lastName" bind:value={$values.lastName} required />
-    </div>
-    <div>
-      <label for="email">Email: </label>
-      <input type="email" name="email" id="email" bind:value={$values.email} required />
-    </div>
-    <div>
-      <label for="username">Username: </label>
-      <input type="text" name="username" id="username" bind:value={$values.username} required />
-    </div>
-    <div>
-      <label for="username">Password: </label>
-      <input type="password" name="password" id="password" bind:value={$values.password} required />
-    </div>
-    <div>
-      <label for="username">Repeat Password: </label>
-      <input
+    <fieldset class="md:grid md:grid-cols-2 md:gap-4">
+      <Input type="text" label="Name" name="name" bind:value={$values.name} />
+      <Input type="text" label="Last name" name="lastName" bind:value={$values.lastName} />
+    </fieldset>
+    <fieldset class="md:grid md:grid-cols-2 md:gap-4">
+      <Input type="email" label="Email" name="email" bind:value={$values.email} />
+      <Input type="text" label="Username" name="username" bind:value={$values.username} />
+    </fieldset>
+    <fieldset class="md:grid md:grid-cols-2 md:gap-4">
+      <Input type="password" label="Password" name="password" bind:value={$values.password} />
+      <Input
         type="password"
+        label="Confirm Password"
         name="confirmPassword"
-        id="confirmPassword"
         bind:value={$values.confirmPassword}
-        required
       />
-    </div>
-    <div>
-      <label for="birthdate">Birthdate: </label>
-      <input
-        type="date"
-        name="birthdate"
-        id="birthdate"
-        bind:value={$values.birthdate}
-        max={today}
-        required
-      />
-    </div>
-    <div>
-      <input type="submit" value="Subscribe!" />
-    </div>
+    </fieldset>
+    <fieldset class="md:grid md:grid-cols-2 md:gap-4">
+      <Input type="date" label="Birthdate" name="birthdate" bind:value={$values.birthdate} />
+    </fieldset>
+    <p class="text-red-600" class:hidden={!error}>
+      {error}
+    </p>
+    <fieldset class="md:grid md:grid-cols-2 md:gap-4 my-2">
+      <input type="submit" value="Create an account" />
+      <button on:click={() => dispatch('toggleForm')}>Login into your account</button>
+    </fieldset>
   </form>
-  <div>
-    <button on:click={() => dispatch('toggleForm')}>Login?</button>
-  </div>
 </div>

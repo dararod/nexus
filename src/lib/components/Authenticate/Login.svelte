@@ -18,6 +18,6 @@
     </div>
   </form>
   <div>
-    <button on:click={() => dispatch('toggleForm')}>Login?</button>
+    <button on:click={() => dispatch('toggleForm')}>Create an account</button>
   </div>
 </div>

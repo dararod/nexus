@@ -1,31 +1,46 @@
 import { urqlClient } from '$lib/utils/urql';
-import { UserCreateDocument } from '$lib/graphql/schema';
+import { RegisterAccountDocument } from '$lib/graphql/schema';
+import { UniqueError } from '$lib/errors/UniqueError';
 
-import type { UserCreateInput, UserFragmentFragment } from '$lib/graphql/schema';
+import type { AccountRegisterInput, UserFragmentFragment } from '$lib/graphql/schema';
 
-export type UserCreate = (input: UserCreateInput) => Promise<UserFragmentFragment>;
+export type AccountRegister = (input: AccountRegisterInput) => Promise<UserFragmentFragment>;
 
 export type UserService = {
-  userCreate: UserCreate;
+  accountRegister: AccountRegister;
 };
 
 function makeUserService(): UserService {
-  const userCreate: UserCreate = async (input: UserCreateInput) => {
+  const accountRegister: AccountRegister = async (input: AccountRegisterInput) => {
     const { data = {}, error } = await urqlClient
-      .mutation(UserCreateDocument, {
+      .mutation(RegisterAccountDocument, {
         input
       })
       .toPromise();
 
     if (error) {
-      throw error;
+      const extensions = (
+        error.graphQLErrors[0].originalError as unknown as {
+          extensions: {
+            code: string;
+            field: string;
+          };
+        }
+      ).extensions;
+      const { code, field } = extensions;
+
+      if (code === 'UNIQUE') {
+        throw new UniqueError(field);
+      }
+
+      throw new Error(`An error ocurred: ${code}`);
     }
 
-    return data;
+    return data.accountRegister;
   };
 
   return {
-    userCreate
+    accountRegister
   };
 }
 
