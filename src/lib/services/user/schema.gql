@@ -11,6 +11,8 @@ fragment UserFragment on User {
 
 mutation RegisterAccount($input: AccountRegisterInput!) {
   accountRegister(input: $input) {
-    ...UserFragment
+    user {
+      ...UserFragment
+   }
   }
 }
