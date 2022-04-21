@@ -81,7 +81,7 @@
       {error}
     </p>
     <fieldset class="md:grid md:grid-cols-2 md:gap-4 my-2">
-       <FormButton>SignUp</FormButton>
+      <FormButton>SignUp</FormButton>
       <FormButton on:click={() => dispatch('toggleForm')}>Login into your account</FormButton>
     </fieldset>
   </form>
