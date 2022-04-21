@@ -5,6 +5,7 @@
   import Input from '$lib/components/Input.svelte';
   import { userService } from '$lib/services/user';
   import { UniqueError } from '$lib/errors/UniqueError';
+  import FormButton from '$lib/components/FormButton.svelte';
 
   let error = null;
 
@@ -80,8 +81,8 @@
       {error}
     </p>
     <fieldset class="md:grid md:grid-cols-2 md:gap-4 my-2">
-      <input type="submit" value="Create an account" />
-      <button on:click={() => dispatch('toggleForm')}>Login into your account</button>
+       <FormButton>SignUp</FormButton>
+      <FormButton on:click={() => dispatch('toggleForm')}>Login into your account</FormButton>
     </fieldset>
   </form>
 </div>

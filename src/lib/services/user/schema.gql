@@ -13,6 +13,6 @@ mutation RegisterAccount($input: AccountRegisterInput!) {
   accountRegister(input: $input) {
     user {
       ...UserFragment
-   }
+    }
   }
 }
